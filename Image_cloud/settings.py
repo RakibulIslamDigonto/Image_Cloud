@@ -40,13 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Albumapp',
-    #'storages'
+    'storages'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
         # Whitenoise for middleware
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,13 +132,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
     # Aws media storage configurations
-#AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVETNTS5YQ'
-#AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVETNTS5YQ'
+AWS_SECRET_ACCESS_KEY = '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'
 
-#AWS_STORAGE_BUCKET_NAME = 'nasim.secpstorage'
-#AWS_S3_FILE_OVERWRITE = False
-#AWS_DEFAULT_ACL = None
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_STORAGE_BUCKET_NAME = 'nasim.secpstorage'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
