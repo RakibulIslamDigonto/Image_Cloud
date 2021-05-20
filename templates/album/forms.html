@@ -101,13 +101,13 @@
   <div class="album py-6 bg-light">
     <div class="container">
 
-        <form class="form-control" id="formGroupExampleInput2" placeholder="Another input" action="" method="POST">
+        <form class="form-control" id="formGroupExampleInput2" method="POST">
 
             <!-- new nav end -->
             {{ create_form.as_p }}
             {% csrf_token %}
+            <input type="submit" name='submit' vlue='add' class='btn btn-primary'>
             
-            <button type="submit" class="btn btn-primary">Create</button>
         </form>
       </div>
     </div>
