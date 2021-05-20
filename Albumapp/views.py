@@ -1,6 +1,28 @@
 from django.shortcuts import render
 from .models import Albums, Images
+from Albumapp import forms
 # Create your views here.
+
+
+def create_album(request):
+    create_form = forms.CreateAlbum()
+
+    if request.method == 'POST':
+
+        create_form = forms.CreateAlbum(request.POST)
+
+        if create_form.is_valid():
+            create_form.save(commit = True)
+            return albumspage(request)
+
+
+    dict = {
+        'massage':'success',
+        'create_form':create_form
+    }
+
+    return render(request, 'album/forms.html', context=dict)
+
 
 def albumspage(request):
     albums = Albums.objects.all()

@@ -8,6 +8,9 @@ class Albums(models.Model):
     discription = models.TextField()
     creation = models.DateTimeField(auto_now_add=True)
 
+    #def __str__(self):
+    #    return self.title
+
 
 class Images(models.Model):
     thumbnail = models.ImageField(upload_to = 'album/images/')
