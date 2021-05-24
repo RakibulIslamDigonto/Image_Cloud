@@ -3,6 +3,15 @@ from .models import Albums, Images
 from Albumapp import forms
 # Create your views here.
 
+def albumspage(request):
+    albums = Albums.objects.all()
+    context = {
+        'albums':albums
+
+    }
+    return render(request, 'album/albums.html', context)
+
+    
 
 def create_album(request):
     create_form = forms.CreateAlbum()
@@ -24,13 +33,7 @@ def create_album(request):
     return render(request, 'album/forms.html', context=dict)
 
 
-def albumspage(request):
-    albums = Albums.objects.all()
-    context = {
-        'albums':albums
 
-    }
-    return render(request, 'album/albums.html', context)
 
 
 def view_photo(request):
