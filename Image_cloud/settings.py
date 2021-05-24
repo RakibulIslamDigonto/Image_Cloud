@@ -42,8 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Albumapp',
     'sign_up_app',
-    'storages'
+    'storages',
+    'crispy_forms'
 ]
+
+#uni-form for crispy form:
+CRISPY_TEMPLATE_PACK= 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

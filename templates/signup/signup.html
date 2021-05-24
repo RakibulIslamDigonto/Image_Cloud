@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
 <!doctype html>
 <html lang="en">
@@ -8,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.83.1">
-    <title>My Albums</title>
+    <title>{{title}}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
@@ -41,36 +42,36 @@
 
 <!-- new nav start -->
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Profile</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light rounded" aria-label="Eleventh navbar example">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Profile</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExample09">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'Albumapp:albumspage' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'sign_up_app:signup' %}">Sign-up</a>
-          </li>
+        <div class="collapse navbar-collapse" id="navbarsExample09">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'Albumapp:albumspage' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'sign_up_app:signup' %}">Sign-up</a>
+            </li>
 
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Touch us</a>
-            <ul class="dropdown-menu" aria-labelledby="dropdown09">
-              <li><a class="dropdown-item" href="#">Sign-up</a></li>
-              <li><a class="dropdown-item" href="#">Sign-in</a></li>
-              <li><a class="dropdown-item" href="#">About us</a></li>
-            </ul>
-          </li>
-        </ul>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-bs-toggle="dropdown" aria-expanded="false">Touch us</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown09">
+                <li><a class="dropdown-item" href="#">Sign-up</a></li>
+                <li><a class="dropdown-item" href="#">Sign-in</a></li>
+                <li><a class="dropdown-item" href="#">About us</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-  <div>
+    </nav>
+    <div>
 
 <!-- new nav end -->
   
@@ -95,23 +96,31 @@
   <section class="py-6 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Create your album</h1>
+        <h1 class="fw-light">Create New Account</h1>
       
       </div>
     </div>
   </section>
 
   <div class="album py-6 bg-light">
-    <div class="container">
+    <div class="container" style="padding-top:20px">
 
+
+        {% if register %}
+        <div class="alert alert-success">
+          Account Creation Success
+        </div>
+        {% else %}
         <form class="form-control" id="formGroupExampleInput2" method="POST">
-
             <!-- new nav end -->
-            {{ create_form.as_p }}
+            {{ signup_form | crispy }}
             {% csrf_token %}
-            <input type="submit" name='submit' vlue='add' class='btn btn-primary'>
+            <button type="submit" class="btn btn-success btn-sm" >Create Account</button>
             
         </form>
+        <br>
+        <p>Already Have Account? <a href="">let's login</a></p>
+        {% endif %}
       </div>
     </div>
   </div>
