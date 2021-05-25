@@ -139,6 +139,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media/'
 
+LOGIN_URL = '/account/login/'
+
     # Aws media storage configurations
 
 AWS_ACCESS_KEY_ID = 'AKIARVGPJVYVJ7ZS57EM'

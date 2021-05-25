@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import authenticate,logout,login as auth_login
+from django.contrib.auth import authenticate,logout,login
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
     form = UserCreationForm()
@@ -24,7 +24,7 @@ def signup(request):
     return render(request, 'account/signup.html', context)
 
 
-def login(request):
+def login_user(request):
     login_form = AuthenticationForm()
     if request.method == 'POST':
         login_form = AuthenticationForm(data=request.POST)
@@ -33,8 +33,13 @@ def login(request):
             password = login_form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-                auth_login(request, user)
+                login(request, user)
                 return HttpResponseRedirect(reverse('Albumapp:albumspage'))
     return render(request, 'account/login.html', context={'login_form':login_form})
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('Albumapp:albumspage'))
             
 
