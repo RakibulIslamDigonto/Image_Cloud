@@ -58,3 +58,10 @@ def edit_album(request):
 
     }
     return render(request, 'album/edit_album.html', context)
+
+
+def about_us(request):
+    context = {
+        'images':'about us'
+    }
+    return render(request, 'album/about_us.html', context)
