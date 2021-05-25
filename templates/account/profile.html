@@ -1,0 +1,18 @@
+{% extends "navbar.html" %}
+{% block title_block %} Profile {% endblock %}
+{% block body_block %}
+
+<main>
+    <section class="py-6 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Your Profile</h1>
+          <p>Username: {{user.username}}</p>
+          <p>Email: {{user.email}}</p>
+          <p>Name: {{user.first_name}} {{user.last_name}}</p>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

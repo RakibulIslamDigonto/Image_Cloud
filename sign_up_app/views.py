@@ -4,14 +4,15 @@ from django.contrib.auth import authenticate,logout,login
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from sign_up_app.forms import SignupForm
 
 def signup(request):
-    form = UserCreationForm()
+    form = SignupForm()
     register = False
     
     
     if request.method == 'POST':
-        form = UserCreationForm(data=request.POST)
+        form = SignupForm(data=request.POST)
         if form.is_valid():
             form.save()
             register = True
@@ -42,4 +43,8 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('Albumapp:albumspage'))
             
+@login_required
+def profile(request):
+    return render(request, 'account/profile.html', context={})
+
 
