@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import authenticate,logout,login
 from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse
@@ -60,4 +60,17 @@ def change_profile(request):
 
     return render(request, 'account/change_profile.html', context={'change_form':change_form})
 
+
+@login_required
+def change_pass(request):
+    curr_user = request.user
+    changed = False
+    change_pass_form = PasswordChangeForm(curr_user)
+    if request.method == 'POST':
+        change_pass_form = PasswordChangeForm(curr_user, data=request.POST)
+        if change_pass_form.is_valid():
+            change_pass_form.save()
+            changed = True
+            return HttpResponseRedirect(reverse('Albumapp:albumspage'))
+    return render(request, 'account/change_pass.html', context={'change_pass_form':change_pass_form, 'changed':changed})
 

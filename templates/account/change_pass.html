@@ -1,0 +1,27 @@
+{% extends "navbar.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %} Change Password {% endblock %}
+{% block body_block %}
+<main>
+    <section class="py-6 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Change Password</h1>
+          {% if changed %}
+          <div class="alert alert-success">
+              Password Changed
+          </div>
+          {% endif %}
+          <form class="form-control" id="formGroupExampleInput2" method="POST">
+            <!-- new nav end -->
+            {{ change_pass_form | crispy }}
+            {% csrf_token %}
+            <button style="margin: 05px" type="submit" class="btn btn-warning btn-sm" >Change Password</button>
+            
+        </form>
+
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}
