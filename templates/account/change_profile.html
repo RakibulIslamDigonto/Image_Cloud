@@ -1,0 +1,23 @@
+{% extends "navbar.html" %}
+{% load crispy_forms_tags %}
+{% block title_block %} Edit Profile {% endblock %}
+{% block body_block %}
+
+<main>
+    <section class="py-6 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Edit Profile</h1>
+          <form class="form-control" id="formGroupExampleInput2" method="POST">
+            <!-- new nav end -->
+            {{ change_form | crispy }}
+            {% csrf_token %}
+            <button style="margin: 05px" type="submit" class="btn btn-warning btn-sm" >Edit Profile</button>
+            
+        </form>
+
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

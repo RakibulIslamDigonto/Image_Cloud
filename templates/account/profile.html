@@ -10,6 +10,8 @@
           <p>Username: {{user.username}}</p>
           <p>Email: {{user.email}}</p>
           <p>Name: {{user.first_name}} {{user.last_name}}</p>
+          <br>
+          <a href="{% url 'sign_up_app:change_profile'%}" class="btn btn-warning btn-sm">Edit Profile</a>
           
         </div>
       </div>
